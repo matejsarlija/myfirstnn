@@ -41,3 +41,7 @@ print(accuracy)
 
 print("y_test - {}".format(y_test.shape))
 print("y_pred - {}".format(y_pred.shape))
+
+# score 0.9692005242463958
+# todo je i preprocessirati text unutar kolumni pa vidjeti kako će to utjecati na rezultate
+# istražiti i druge metrike
