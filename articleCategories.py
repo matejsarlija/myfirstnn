@@ -9,4 +9,6 @@ from sklearn.feature_extraction.text import TfidfVectorizer,CountVectorizer
 
 # Vektoriziraj ulazne podatke i istreniraj mrežu, testiraj na validacijskom setu
 
-news = pd.read_csv('Data_Train.csv',encoding='ISO-8859-1')
+news = pd.read_csv('news/Data_Train.csv',encoding='ISO-8859-1')
+
+print(news)
