@@ -4,4 +4,8 @@ from sklearn.feature_extraction.text import TfidfVectorizer,CountVectorizer
 
 # Vektoriziraj ulazne podatke i istreniraj mrežu, testiraj na validacijskom setu
 
-spam = pd.read_csv('spam.csv',encoding='ISO-8859-1')
+spam = pd.read_csv('data/spam.csv',encoding='ISO-8859-1')
+
+print(spam)
+
+# TfidfVectorizer je higher-level od TfidfTransformera
