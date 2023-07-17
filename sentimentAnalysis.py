@@ -11,7 +11,20 @@ from sklearn.metrics import classification_report
 
 sentiment_df = pd.read_csv("data/dataset.txt", delimiter=";", names=["text", "label"])
 
-print(sentiment_df)
+labels = sentiment_df['label'].squeeze().to_numpy()
+
+set_labels = set(labels)
+
+labele = {y:x for x,y in enumerate(set_labels)}
+#print(set_labels)
+print(labele)
+
+def our_hot(x):
+    return labele[x]
+
+sentiment_df['label'] = sentiment_df['label'].apply(our_hot)
+
+#print(sentiment_df.head())
 
 def obrada_teksta(poruke):
     removed_punct = [znak for znak in poruke if znak not in string.punctuation]
@@ -19,7 +32,6 @@ def obrada_teksta(poruke):
 
     removed_stop_w = [word for word in removed_punct.split() if word.lower() not in stopwords.words("english")]
     return removed_stop_w
-
 
 
 X_train, X_test, y_train, y_test = train_test_split(sentiment_df['text'], sentiment_df['label'],test_size=0.25)
