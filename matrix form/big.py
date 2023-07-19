@@ -2,7 +2,6 @@ import numpy as np
 from keras.datasets import mnist
 
 
-
 def ReLU(x):
     return np.maximum(x,0)
 
@@ -62,7 +61,6 @@ class NN():
         self.b1 -= db1 * self.learningRate
         self.W2 -= dW2 * self.learningRate
         self.b2 -= db2 * self.learningRate
-
 
 
     def fit(self):
