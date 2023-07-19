@@ -1,8 +1,10 @@
+import numpy as np
+
 v1 = [0,3,4,5,6]
 v2 = [4,5,6,7,8]
 
 def dot(v1, v2):
-    dot_product = sum((a * b) for a, b in zip(v1, v2))
+    dot_product = np.dot(v1, v2)
     return dot_product
 
 def cosine_similarity(v1, v2):
