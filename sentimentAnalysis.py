@@ -51,7 +51,6 @@ pipeline = Pipeline([
 pipeline.fit(X_train, y_train)
 y_preds = pipeline.predict(X_test)
 
-
 print(classification_report(y_test, y_preds))
 
 x_test = ["i am feeling bad"]
