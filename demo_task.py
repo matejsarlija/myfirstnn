@@ -11,7 +11,7 @@ curly_braces_pattern = r'\{.*?\}'
 
 unicode_characters_pattern = r'\\u[0-9a-fA-F]+'
 
-spaces_pattern = r'\s{3,}'
+spaces_pattern = r'\s{2,}'
 
 double_backslash_pattern = r'\\{2,}[^\s]*'
 
@@ -59,10 +59,9 @@ updated_json_data = {}
 
 
 for k, v in json_data.items():
-    cleaned_space = v.replace("\n", "")
 
     cleaned_html = remove_script_style_elements(v)
-    stripped_val = cleaned_html.replace("\n", "")
+    stripped_val = cleaned_html.replace('\n', '')
     # Use spaCy to remove irrelevant text
     cleaned_val = remove_irrelevant_text(stripped_val)
     # Remove content within curly braces
@@ -87,4 +86,4 @@ updated_wiki_json = json.dumps(updated_json_data)
 
 
 with open('scrubbed_wiki_data.json', 'w') as json_file_new:
-    json.dump(updated_json_data, json_file_new, ensure_ascii=False)
+    json.dump(updated_json_data, json_file_new, ensure_ascii=True)
