@@ -13,7 +13,7 @@ unicode_characters_pattern = r'\\u[0-9a-fA-F]+'
 
 spaces_pattern = r'\s{2,}'
 
-double_backslash_pattern = r'\\{2,}[^\s]*'
+double_backslash_pattern = r'\\\\([^ ]+)'
 
 
 def remove_within_curly_braces(text):
@@ -23,10 +23,16 @@ def remove_unicode_characters(text):
     return re.sub(unicode_characters_pattern, '', text)
 
 def remove_consecutive_spaces(text):
-    return re.sub(spaces_pattern, ' ', text)
+    return re.sub(spaces_pattern, '', text)
 
 def remove_double_backslash_tokens(text):
     return re.sub(double_backslash_pattern, '', text)
+
+def remove_strings_with_double_pipe(text):
+    return re.sub(r'\|\|.*?\|\|', '', text)
+
+def remove_words_with_double_braces(text):
+    return re.sub(r'\b\w*(?:\{\{|}})\w*\b', '', text)
 
 def remove_irrelevant_text(text):
     # Parse the text with spaCy
@@ -51,18 +57,16 @@ def remove_script_style_elements(html_content):
 
 # Save the documents as a JSON file
 with open('wikipedia_entries.json', 'r', encoding='utf-8') as json_file:
-    json_data = json.load(json_file)
+    json_data = json.loads(json_file.read())
 
 print(type(json_data))
 
 updated_json_data = {}
 
-
 for k, v in json_data.items():
 
     cleaned_html = remove_script_style_elements(v)
     stripped_val = cleaned_html.replace('\n', '')
-    # Use spaCy to remove irrelevant text
     # Remove content within curly braces
     cleaned_val = remove_within_curly_braces(stripped_val)
     # Remove any Unicode characters
@@ -73,6 +77,10 @@ for k, v in json_data.items():
     cleaned_val = remove_consecutive_spaces(cleaned_val)
 
     cleaned_val = remove_double_backslash_tokens(cleaned_val)
+
+    cleaned_val = remove_strings_with_double_pipe(cleaned_val)
+
+    cleaned_val = remove_words_with_double_braces(cleaned_val)
 
 
     cleaned_val = cleaned_val.encode("ascii", "ignore")
