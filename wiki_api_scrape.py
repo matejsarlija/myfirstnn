@@ -23,7 +23,7 @@ def scrape_wikipedia_search(topic, max_entries=200):
     return entries
 
 if __name__ == "__main__":
-    selected_topic = "Machine Learning"  # Replace with your desired topic
+    selected_topic = "Machine Learning"
     max_entries = 100
 
     entries = scrape_wikipedia_search(selected_topic, max_entries)
