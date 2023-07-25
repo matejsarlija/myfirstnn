@@ -63,9 +63,8 @@ for k, v in json_data.items():
     cleaned_html = remove_script_style_elements(v)
     stripped_val = cleaned_html.replace('\n', '')
     # Use spaCy to remove irrelevant text
-    cleaned_val = remove_irrelevant_text(stripped_val)
     # Remove content within curly braces
-    cleaned_val = remove_within_curly_braces(cleaned_val)
+    cleaned_val = remove_within_curly_braces(stripped_val)
     # Remove any Unicode characters
 
     cleaned_val = remove_unicode_characters(cleaned_val)
