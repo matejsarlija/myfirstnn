@@ -1,10 +1,8 @@
 import numpy as np
 
-
 """
 Perceptron... classifier I guess?
 """
-
 
 """
 params:
@@ -41,4 +39,3 @@ class Perceptron:
 
     def net_input(self, X):
         pass
-
