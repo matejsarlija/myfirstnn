@@ -3,9 +3,6 @@ import re
 import spacy
 from bs4 import BeautifulSoup
 
-
-nlp = spacy.load('en_core_web_sm')
-
 # we're scrubbing markdown
 curly_braces_pattern = r'\{.*?\}'
 
@@ -23,7 +20,7 @@ def remove_unicode_characters(text):
     return re.sub(unicode_characters_pattern, '', text)
 
 def remove_consecutive_spaces(text):
-    return re.sub(spaces_pattern, '', text)
+    return re.sub(spaces_pattern, ' ', text)
 
 def remove_double_backslash_tokens(text):
     return re.sub(double_backslash_pattern, '', text)
