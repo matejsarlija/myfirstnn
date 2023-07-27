@@ -38,4 +38,14 @@ class Perceptron:
         return self
 
     def net_input(self, X):
-        pass
+        """
+        Calculate net input (izlaz jednog neurona)
+        """
+        return np.dot(X, self.w_) + self.b_
+
+
+    def predict(self, X):
+        """
+        Return class label after unit step
+        """
+        return np.where(self.net_input(X) >= 0.0, 1, 0)
