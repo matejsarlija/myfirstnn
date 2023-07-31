@@ -42,3 +42,5 @@ processed_corpus = [[token for token in text if frequency[token] > 1] for text i
 
 dictionary = corpora.Dictionary(processed_corpus)
 print(dictionary)
+
+pprint.pprint(dictionary.token2id)
