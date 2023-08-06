@@ -1,6 +1,6 @@
 import PyPDF2
-
-pdf_in = open("C:\\Users\\Korisnik\\Desktop\\nlp-centar\\lbdl-a5-booklet.pdf", 'rb')
+\
+pdf_in = open("lbdl-a5-booklet.pdf", 'rb')
 pdf_reader = PyPDF2.PdfReader(pdf_in)
 pdf_writer = PyPDF2.PdfWriter()
 
