@@ -50,12 +50,6 @@ vectordb = Chroma.from_documents(
 vectordb.persist()
 
 
-# qa_chain = RetrievalQA.from_chain_type(
-#     llm=falcon_llm,
-#     retriever = vectordb.as_retriever(search_kwargs={'k': 20}),
-#     return_source_documents=True
-# )
-
 document_qa = ConversationalRetrievalChain.from_llm(
      llm=falcon_llm,
      retriever = vectordb.as_retriever(search_kwargs={'k': 13}),
