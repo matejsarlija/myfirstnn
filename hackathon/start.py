@@ -58,7 +58,7 @@ document_qa = ConversationalRetrievalChain.from_llm(
      )
 
 """
-result = qa_chain({'query': 'What is True Positive score from January 2023. of our CNN?'})
+result = qa_chain({'query': 'What is SENDD?'})
 print(result['result'])
  """
 
@@ -80,6 +80,7 @@ while True:
     result = document_qa(
         {"question": query, "chat_history": chat_history})
     print(f"{white}Answer: " + result["answer"])
+    #debug statement with the full query
     print(f"{white}Query: " + result["question"])
 
     chat_history.append((query, result["answer"]))
